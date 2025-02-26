@@ -3,9 +3,6 @@ class Token:
         self.type=type
         self.value=value
 
-    def __str__(self):
-        return "Token({type},{value})".format(type=self.type,value=repr(self.value))
-
 class Lexer:
     def __init__(self,text):
         self.text=text
@@ -13,8 +10,8 @@ class Lexer:
         self.current_char=self.text[self.pos]
 
     def advance(self):
-        """presun na dalsi znak"""
-        self.pos=self.pos+1
+        """posun na dalsi znak"""
+        self.pos+=1
         if self.pos>len(self.text)-1:
             self.current_char=None
         else:
@@ -122,6 +119,7 @@ class Parser:
 
 def main():
     try:
+        print("Zadajte cislo n")
         n=int(input())
         for i in range(n):
             text=input()
@@ -133,7 +131,7 @@ def main():
             except Exception:
                 print("ERROR")
     except ValueError:
-        print("invalid number entered")
+        print("Zle zadane cislo n")
 
 if __name__=="__main__":
     main()
